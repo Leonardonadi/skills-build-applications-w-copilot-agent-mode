@@ -23,4 +23,4 @@ router.get('/workouts/', async (_request, response) => {
   response.json(await Workout.find().lean())
 })
 
-export default router
+export default router// Trigger GitHub Actions Mona validation

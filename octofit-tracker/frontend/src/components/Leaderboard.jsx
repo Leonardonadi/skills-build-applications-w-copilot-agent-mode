@@ -1,5 +1,10 @@
 import CollectionPage from './CollectionPage.jsx'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
+const leaderboardApiUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/leaderboard/`
+  : 'http://localhost:8000/api/leaderboard/'
+
 function displayName(entry) {
   return entry.user?.username ?? entry.user?.name ?? entry.username ?? 'Athlete'
 }
@@ -31,6 +36,7 @@ export default function Leaderboard() {
       eyebrow="COMMUNITY / STANDINGS"
       description="A live look at points earned across individual and team training."
       endpoint="leaderboard"
+      apiUrl={leaderboardApiUrl}
       columns={columns}
       emptyTitle="The standings are waiting"
     />

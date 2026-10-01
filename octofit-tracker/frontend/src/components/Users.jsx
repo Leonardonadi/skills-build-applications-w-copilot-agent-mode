@@ -1,5 +1,10 @@
 import CollectionPage from './CollectionPage.jsx'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
+const usersApiUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/users/`
+  : 'http://localhost:8000/api/users/'
+
 function displayName(user) {
   return user.username ?? user.name ?? user.fullName ?? 'Athlete'
 }
@@ -38,6 +43,7 @@ export default function Users() {
       eyebrow="COMMUNITY / MEMBERS"
       description="People showing up, building habits, and moving forward."
       endpoint="users"
+      apiUrl={usersApiUrl}
       columns={columns}
       emptyTitle="No athletes to show"
     />

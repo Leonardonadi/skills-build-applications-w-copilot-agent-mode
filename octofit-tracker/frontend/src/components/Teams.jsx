@@ -1,5 +1,10 @@
 import CollectionPage from './CollectionPage.jsx'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
+const teamsApiUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/teams/`
+  : 'http://localhost:8000/api/teams/'
+
 const columns = [
   {
     label: 'TEAM',
@@ -27,6 +32,7 @@ export default function Teams() {
       eyebrow="COMMUNITY / SQUADS"
       description="Training groups building momentum together."
       endpoint="teams"
+      apiUrl={teamsApiUrl}
       columns={columns}
       emptyTitle="No teams created"
     />

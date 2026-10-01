@@ -1,5 +1,10 @@
 import CollectionPage from './CollectionPage.jsx'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
+const activitiesApiUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/activities/`
+  : 'http://localhost:8000/api/activities/'
+
 function formatDate(value) {
   if (!value) return 'Date not set'
   const date = new Date(value)
@@ -41,6 +46,7 @@ export default function Activities() {
       eyebrow="MOVEMENT / DAILY RECORD"
       description="Training sessions from across your OctoFit community."
       endpoint="activities"
+      apiUrl={activitiesApiUrl}
       columns={columns}
       emptyTitle="No activities recorded"
     />

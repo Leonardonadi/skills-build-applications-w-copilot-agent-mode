@@ -1,5 +1,10 @@
 import CollectionPage from './CollectionPage.jsx'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
+const workoutsApiUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/workouts/`
+  : 'http://localhost:8000/api/workouts/'
+
 const columns = [
   {
     label: 'WORKOUT',
@@ -27,6 +32,7 @@ export default function Workouts() {
       eyebrow="TRAINING / SUGGESTIONS"
       description="A library of sessions for strength, endurance, and recovery."
       endpoint="workouts"
+      apiUrl={workoutsApiUrl}
       columns={columns}
       emptyTitle="No workouts available"
     />

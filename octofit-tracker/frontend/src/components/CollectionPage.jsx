@@ -1,7 +1,7 @@
 import useCollection from '../hooks/useCollection.js'
 
-export default function CollectionPage({ title, eyebrow, description, endpoint, columns, emptyTitle }) {
-  const { items, status, error, refresh } = useCollection(endpoint)
+export default function CollectionPage({ title, eyebrow, description, endpoint, apiUrl, columns, emptyTitle }) {
+  const { items, status, error, refresh } = useCollection(apiUrl)
   const isLoading = status === 'loading'
 
   return (
